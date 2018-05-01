@@ -1,0 +1,58 @@
+.dropdown-menu {
+    width: 100%;
+    margin-top: -1px;
+}
+
+body {
+    padding-top: 5rem;
+}
+.active {
+    color: black;
+}
+
+.grey {
+    color: rgba(0,0,0,.5);
+}
+
+.black {
+    background-color: #f8f9fa;
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+#div-h3 {
+    margin-top: 50px;
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.nav-item.active {
+    background-color: #d5d5d5;
+
+}
+.nav-link:hover {
+    color: #495057;
+    background-color: #d5d5d5;
+}
+
+#navbar-top > li > a, .navbar-brand {
+    padding-top:4px !important;
+    padding-bottom:0 !important;
+    height: 28px;
+}
+.navbar {min-height:28px !important;}
+.center-block {
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+
+// In case you're dealing with a inline element apply this to the parent
+.text-center {
+    text-align:center
+}

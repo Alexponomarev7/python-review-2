@@ -1,0 +1,44 @@
+
+{% extends 'template.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid" id="div-h3">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="display-4" style="margin-left: 6%"> Новости </h2>
+            </div>
+            <div class="col-md-4 text-center partners">
+                <h3 class="display-4" style="margin-right: 3%"> Партнеры </h3>
+            </div>
+        </div>
+        <div style="margin-top: 5%" class="row">
+            <div class="col-md-8" style="margin-bottom: 7%">
+                {% for post in posts %}
+                <div class="media">
+                    <img style="width: 150px; max-width: 100%; height: auto;" class="mr-3 img-fluid partners" src="{% static post.logo.url %}" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0"> {{ post.title }}</h5>
+                        {{ post.text|truncatechars:140 }}
+                        {% if post.text|length > 140 %}
+                            <a href="{% url 'read_news' post.id %}" >Читать далее</a>
+                        {% endif %}
+
+                    </div>
+                    <p class="card-text partners"><small class="text-muted">Last updated {{ post.publication_date }} </small></p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-4 text-center partners">
+                <a href="https://mipt.ru"><img class="rounded mx-auto d-block" src="{% static 'mipt.png' %}"></a>
+                <br>
+                <br>
+                <a href="https://mipt.ru/diht/"><img style="width: 50%" class="rounded mx-auto d-block" src="{% static 'diht.jpg' %}"></a>
+
+            </div>
+        </div>
+
+    </div><!-- /.container -->
+{% endblock %}

@@ -1,0 +1,72 @@
+
+{% extends 'template.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container" id="div-h3">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="display-4" style="margin-left: -1%"> Мои проекты </h2>
+            </div>
+        </div>
+
+        <div style="margin-top: 5%" class="row">
+            <script>var amo_forms_params = {"id":302272,"hash":"720be558330f0e5693070cd4af693c09","locale":"ru"};</script><script id="amoforms_script" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js"></script>
+        </div>
+        
+        {% for post in posts %}
+        <div style="margin-top: 5%" class="row">
+            <div class="media">
+                <img style="width: 150px; max-width: 100%; height: auto;" class="mr-3 img-fluid" src="{% static post.logo.url %}" alt="Generic placeholder image">
+                <div class="media-body">
+                    <h5 class="mt-0"> {{ post.name }}</h5>
+                    {{ post.text }}
+                    <br>
+                    {% if post.status == "Выполняется" %}
+                    <i style="color:green">{{ post.status }}</i>
+                    {% else %}
+                    {% if post.status == "Завершен" %}
+                    <i style="color:red">{{ post.status }}</i>
+                    {% else %}
+                    <i style="color:orange">{{ post.status }}</i>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <hr>
+        <div class="row" style="margin-top: 3%">
+            <div class="col-12">
+                <h2 class="display-4" style="margin-left: -1%"> Мои заказы </h2>
+            </div>
+        </div>
+
+        <div style="margin-top: 5%" class="row">
+            <button style="box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px; display: inline-block; font-family: Tahoma, Arial, sans-serif; padding: 0px 33px; border-radius: 3px; height: 52px; border: none; outline: none; cursor: pointer; text-transform: none; font-weight: 400; margin: 0px 0px 15px; font-size: 15px; color: rgb(255, 255, 255); background-color: rgb(255, 89, 124);">Сделать новый заказ</button>
+        </div>
+
+        {% for post in orders %}
+        <div style="margin-top: 5%" class="row">
+            <div class="media">
+                <div class="media-body">
+                    <h5 class="mt-0"> {{ post.name }}</h5>
+                    {{ post.text }}
+                    <br>
+                    {% if post.status == "Выполнен" %}
+                    <i style="color:green">{{ post.status }}</i>
+                    {% else %}
+                    {% if post.status == "Отклонен" %}
+                    <i style="color:red">{{ post.status }}</i>
+                    {% else %}
+                    <i style="color:orange">{{ post.status }}</i>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+{% endblock %}
